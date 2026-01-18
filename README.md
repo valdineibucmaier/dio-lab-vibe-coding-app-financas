@@ -57,6 +57,57 @@ Depois de preencher o modelo, use o Copilot Web para revisar e melhorar o seu pr
 
 > [!TIP]
 > Pense no PRD/Prompt como “o briefing que a IA precisa para entender sua vibe”. Portanto, quanto mais claro e intencional for o texto, mais próximas do ideal serão as respostas da IA.
+>
+>
+
+Entendendo o conceito de desig universal e aplicado ao PRD:
+O que é Design Universal?
+O Design Universal é o conceito de projetar produtos e ambientes para que sejam utilizáveis por todas as pessoas, na maior medida possível, sem a necessidade de adaptação ou design especializado.
+Imagine uma rampa na calçada: ela foi feita para cadeirantes, mas ajuda a pessoa com carrinho de bebê, o idoso com mobilidade reduzida e o entregador com uma carga pesada. No mundo digital, o Design Universal segue lógica semelhante através de 7 princípios, focando em:
+
+Flexibilidade: O app deve ser útil para quem prefere digitar ou quem prefere comandos de voz.
+
+Simplicidade e Intuição: O uso deve ser fácil de entender, independentemente da experiência, conhecimento ou nível de concentração do usuário (perfeito para o seu público iniciante).
+
+Informação Perceptível: O app deve comunicar informações de forma eficaz, usando contrastes de cores adequados e textos legíveis.
+
+Tolerância ao Erro: Se o usuário digitar algo errado no chat, o app deve minimizar o impacto e ajudar a corrigir facilmente.
+
+Adicionei uma nova seção específica para garantir que a IA (Lovable) siga essas diretrizes.
+
+#### PRD Atualizado (Versão 2.0)
+#### Título do Projeto: Finanças Flow
+
+Visão: Gestão financeira natural, inclusiva e acessível para todos.
+
+1. Objetivo e Valor
+Criar um MVP de um assistente financeiro baseado em chat que remove barreiras técnicas e cognitivas, permitindo que qualquer pessoa organize suas finanças.
+
+2. Premissa de Design: Design Universal
+Acessibilidade Visual: Contrastes elevados (padrão WCAG), fontes de tamanho legível e ícones que complementam o texto (não dependa apenas de cores para passar informação).
+
+Simplicidade Cognitiva: Linguagem clara, sem termos técnicos bancários complexos. O "Agente" deve falar como um amigo prestativo.
+
+Navegação Consistente: Botões grandes e fáceis de clicar (target touch adequado para diferentes habilidades motoras).
+
+3. Funcionalidades Detalhadas
+Input Natural e Flexível: Aceitar diferentes formas de entrada (texto, números isolados, ou frases completas).
+
+Dashboard de Leitura Rápida: Gráficos com legendas claras e suporte a leitores de tela.
+
+Feedback Instantâneo: Sempre que o usuário registrar algo, o app deve confirmar visualmente e por texto o que foi entendido (ex: "Ok! Notei R$ 50 em Alimentação").
+
+4. Requisitos Técnicos (Vibe Coding)
+Stack: React, Tailwind CSS, Lucide Icons.
+
+Componentes: Usar a biblioteca Radix UI (através do Shadcn) por já possuir componentes com acessibilidade nativa (Aria-labels).
+
+Responsividade: O layout deve ser perfeito tanto em celulares antigos com telas pequenas quanto em desktops.
+
+Como aplicar isso no Lovable (Exemplo de Prompt)
+Para garantir que a "vibe" seja universal, você pode usar este prompt:
+
+"Estou construindo o Finanças Flow. Quero que a interface siga os princípios do Design Universal. Isso significa que as cores devem ter alto contraste, os botões devem ser fáceis de clicar e o layout deve ser extremamente intuitivo para pessoas que não têm intimidade com tecnologia. Use componentes acessíveis do Shadcn/UI."
 
 ### 2. Explorando o Lovable na Prática
 
@@ -72,18 +123,42 @@ Durante essa etapa, você pode orientar a IA para três entregas principais:
 > [!TIP]
 > Se preferir, você pode fazer tudo com o **Copilot**. O importante é exercitar a habilidade de transformar intenções em instruções claras e testar os limites da IA como parceira criativa.
 
+#### Prompts utilizados no Lovable:
+
+Etapa 1: O "Esqueleto" e a Vibe Visual
+Nesta etapa, você define a identidade e a estrutura básica.
+
+Prompt: "Quero criar um MVP de um app de finanças chamado 'Finanças Flow'. Use React, Tailwind CSS e Shadcn/UI. A interface deve ser baseada em Design Universal: cores de alto contraste (Slate-900 para texto, Blue-700 para destaques, Slate-50 para fundo), fontes com tamanho mínimo de 16px e botões com pelo menos 44px de altura. A tela principal deve ser um chat centralizado com um cabeçalho simples que mostre o 'Saldo Atual'."
+
+Etapa 2: A Experiência de Conversa (Frontend)
+Agora você dá vida à interação de chat, antes mesmo de ligar o banco de dados.
+
+Prompt: "Agora, implemente a interface do chat. As mensagens do usuário devem aparecer à direita e as do 'Agente Financeiro' à esquerda. Adicione ícones da Lucide React para cada mensagem. Quando o usuário digitar um gasto, como 'Gastei 50 reais em pizza', simule uma resposta do agente confirmando: 'Entendido! Registrei R$ 50,00 em Alimentação'."
+
+Etapa 3: Estrutura de Dados (Supabase)
+Aqui você prepara o "cérebro" que vai guardar as informações.
+
+Prompt: "Configure o banco de dados Supabase para este projeto. Preciso de uma tabela chamada transactions com as colunas: id, created_at, description (texto), amount (numérico), category (texto) e type (gasto ou ganho). Além disso, crie uma tabela goals para metas financeiras com title, target_amount e current_amount."
+
+Etapa 4: Lógica de Extração com IA
+Esta é a parte crucial do Vibe Coding: transformar linguagem natural em dados estruturados.
+
+Prompt: "Implemente a lógica onde o chat processa a entrada do usuário. Use uma função para identificar o valor e a categoria no texto digitado. Se o usuário disser 'Recebi 3000 de salário', o app deve salvar na tabela transactions como um 'ganho'. Se disser 'Gasolina 200', deve salvar como 'gasto' na categoria 'Transporte'. Garanta que o Saldo Atual no topo da tela seja atualizado automaticamente."
+
+Etapa 5: Dashboard e Relatórios Acessíveis
+Adicionando a parte visual para o usuário acompanhar o progresso.
+
+Prompt: "Crie uma aba ou seção de 'Relatórios'. Use gráficos simples (barras ou pizza) que sejam acessíveis para leitores de tela. O gráfico deve mostrar os gastos por categoria do mês atual. Adicione também uma seção de 'Metas' que mostre barras de progresso para as metas salvas no banco de dados."
+
+Etapa 6: O Agente de Insights (Educação Financeira)
+Finalizando com a funcionalidade de "Dicas".
+
+Prompt: "Adicione um botão chamado 'Dica de Economia'. Quando clicado, o Agente Financeiro deve analisar as transações recentes e dar uma dica educativa personalizada em tom amigável, focada em ajudar iniciantes a economizar. Exemplo: 'Notei que você gastou bastante com delivery esta semana. Que tal tentar cozinhar em casa amanhã?'"
+
+Imagem do resultado obtido durante os prompts de vibe coding:
+<img width="1366" height="604" alt="app_financas_flow" src="https://github.com/user-attachments/assets/7328607e-34ee-444d-94ed-04091a731c3a" />
+
 ### 3. Entregando o Desafio na DIO
-
-Finalize seu projeto criando um **repositório no GitHub** (pode ser um **fork** deste).  
-No README do seu repositório, inclua:
-
-- Seu **prompt final** (PRD);  
-- Prints ou pequenos vídeos das interações com a IA;  
-- Um resumo do que o seu **App de Finanças Pessoais** faz;  
-- Uma breve **reflexão sobre o processo**:
-  - O que funcionou bem?  
-  - O que não funcionou como o esperado?  
-  - O que aprendeu sobre conversar com IAs?
 
 > [!TIP]
 > Publique seu repositório e compartilhe o link na plataforma da DIO! Sua entrega é a prova de que você domina o raciocínio de Vibe Coding, mesmo sem escrever uma única linha de código.
