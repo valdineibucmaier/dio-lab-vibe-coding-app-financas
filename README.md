@@ -160,6 +160,57 @@ Imagem do resultado obtido durante os prompts de vibe coding:
 
 ### 3. Entregando o Desafio na DIO
 
+Resumo da aplicação desenvolvida:
+
+📱 Finanças Flow - Funcionalidades do MVP
+O Finanças Flow é um assistente financeiro inteligente projetado para ser simples, acessível e educativo. Abaixo estão as principais funcionalidades implementadas no MVP:
+
+1. 💬 Registro por Linguagem Natural (Chat-First)
+O que é: Em vez de formulários, o usuário registra gastos e ganhos conversando.
+
+Como funciona: A IA interpreta frases como "Gastei 40 reais com Uber" ou "Caiu o salário de 3000" e extrai automaticamente o valor, a categoria e o tipo de transação.
+
+Vantagem: Elimina a barreira da entrada manual complexa.
+
+2. 🤖 Agente Financeiro Educativo
+O que é: Um assistente proativo que analisa o comportamento de gastos.
+
+Como funciona: Através de um botão de "Insights", o agente sugere dicas de economia personalizadas.
+
+Vantagem: Transforma o app de um simples "extrato" em uma ferramenta de educação financeira.
+
+3. 📊 Dashboard de Visão Geral (Acessível)
+O que é: Um resumo visual do saldo e das despesas do mês.
+
+Como funciona: Gráficos de alta legibilidade que mostram a distribuição dos gastos por categoria.
+
+Vantagem: Permite entender a saúde financeira em segundos, seguindo diretrizes de Design Universal (alto contraste e leitura clara).
+
+4. 🎯 Gestão de Metas Simplicada
+O que é: Acompanhamento de objetivos financeiros (ex: Reserva de Emergência).
+
+Como funciona: Barras de progresso visuais que mostram o quanto falta para atingir cada objetivo definido.
+
+Vantagem: Motiva o usuário iniciante a manter o foco no longo prazo.
+
+5. ♿ Design Universal e Acessibilidade
+O que é: Interface pensada para todos os tipos de usuários.
+
+Como funciona: * Botões grandes e áreas de toque otimizadas (mínimo 44px).
+
+Uso de ícones + texto para facilitar a compreensão.
+
+Paleta de cores com alto contraste para garantir legibilidade.
+
+🛠️ Tecnologias Utilizadas
+Frontend: React + Tailwind CSS (Vibe Coding via Lovable).
+
+Componentes: Shadcn/UI & Radix UI (Acessibilidade nativa).
+
+Banco de Dados: Supabase.
+
+Ícones: Lucide React.
+
 > [!TIP]
 > Publique seu repositório e compartilhe o link na plataforma da DIO! Sua entrega é a prova de que você domina o raciocínio de Vibe Coding, mesmo sem escrever uma única linha de código.
 
